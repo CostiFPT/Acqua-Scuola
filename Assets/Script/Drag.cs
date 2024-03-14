@@ -33,9 +33,12 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         playArea = GameObject.Find("PlayArea");
         Area = playArea.transform;
-        this.tag = "Untagged";
+        if (this.tag != "Placed")
+        {
+            this.tag = "Untagged";
+        }
 
-        if (this.tag != "HandCard")
+        if ((this.tag != "HandCard" && playArea.GetComponent<DropZone>().DropOnZone == true) || this.tag == "Placed")
         {
             this.transform.SetParent(Area);
             this.tag = "Placed";
@@ -45,6 +48,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             this.transform.SetParent(parentToReturnTo);
             this.tag = "HandCard";
         }
+
         //Debug.Log("EndDrag");
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<LayoutElement>().ignoreLayout = false;

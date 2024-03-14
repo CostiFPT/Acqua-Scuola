@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Clone
+  - HandCard
+  - Placed
   layers:
   - Default
   - TransparentFX
