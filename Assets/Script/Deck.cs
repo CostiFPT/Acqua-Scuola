@@ -98,15 +98,18 @@ public class Deck : MonoBehaviour
         {
             CardInDeck4.SetActive(false);
         }
-        if (deckSize < 0)
+        if (deckSize <= 0)
         {
             CardInDeck5.SetActive(false);
         }
 
         if(TurnSystem.startTurn == true)
         {
-            StartCoroutine(Draw(1));
-            TurnSystem.startTurn = false;
+            if(deckSize != 0)
+            {
+                StartCoroutine(Draw(1));
+                TurnSystem.startTurn = false;
+            }
         }
     }
 
