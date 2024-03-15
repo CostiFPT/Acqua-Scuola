@@ -6,10 +6,12 @@ TagManager:
   tags:
   - Clone
   - HandCard
-  - Placed
   - WaterArea
   - PlacingArea
   - DiscardArea
+  - Placed1
+  - Placed2
+  - Placed3
   layers:
   - Default
   - TransparentFX
