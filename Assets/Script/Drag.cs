@@ -6,8 +6,12 @@ using UnityEngine.UI;
 
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    GameObject playArea;
-    Transform Area;
+    GameObject playArea1;
+    GameObject playArea2;
+    GameObject playArea3;
+    Transform WaterArea;
+    Transform PlacingArea;
+    Transform DiscardArea;
     Transform parentToReturnTo = null;
     
 
@@ -22,7 +26,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (this.tag != "Placed")
+        if (this.tag != "Placed1" && this.tag != "Placed2" && this.tag != "Placed3")
         {
             this.transform.position = eventData.position;
         }
@@ -31,26 +35,39 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        playArea = GameObject.Find("PlayArea");
-        Area = playArea.transform;
-        if (this.tag != "Placed")
+        playArea1 = GameObject.Find("PlayArea");
+        WaterArea = playArea1.transform;
+        playArea2 = GameObject.Find("PlacingArea");
+        PlacingArea = playArea2.transform;
+        playArea3 = GameObject.Find("DiscardArea");
+        DiscardArea = playArea3.transform;
+        if (this.tag != "Placed1" && this.tag != "Placed2" && this.tag != "Placed3")
         {
             this.tag = "Untagged";
         }
-
-        if ((this.tag != "HandCard" && playArea.GetComponent<DropZone>().DropOnZone == true) || this.tag == "Placed")
+        if ((this.tag != "HandCard" && playArea1.GetComponent<DropZone>().DropOnZone == true && this.tag != "Placed2" && this.tag != "Placed3") || this.tag == "Placed1")
         {
-            this.transform.SetParent(Area);
-            this.tag = "Placed";
+            this.transform.SetParent(WaterArea);
+            this.tag = "Placed1";
         }
-        if (this.tag != "Placed")
+        if ((this.tag != "HandCard" && playArea2.GetComponent<DropZone1>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed3") || this.tag == "Placed2")
+        {
+            this.transform.SetParent(PlacingArea);
+            this.tag = "Placed2";
+        }
+        if ((this.tag != "HandCard" && playArea3.GetComponent<DropZone2>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed2") || this.tag == "Placed3")
+        {
+            this.transform.SetParent(DiscardArea);
+            this.tag = "Placed3";
+        }
+        if (this.tag != "Placed1" && this.tag != "Placed2" && this.tag != "Placed3")
         {
             this.transform.SetParent(parentToReturnTo);
             this.tag = "HandCard";
         }
 
-        //Debug.Log("EndDrag");
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+            //Debug.Log("EndDrag");
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<LayoutElement>().ignoreLayout = false;
     }
 

@@ -7,6 +7,9 @@ TagManager:
   - Clone
   - HandCard
   - Placed
+  - WaterArea
+  - PlacingArea
+  - DiscardArea
   layers:
   - Default
   - TransparentFX
