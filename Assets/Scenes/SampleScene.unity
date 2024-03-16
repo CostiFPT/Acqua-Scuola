@@ -2226,6 +2226,7 @@ MonoBehaviour:
   isEnemyTurn: 0
   Turnotuo: {fileID: 1924001771}
   Turnoavv: {fileID: 655835625}
+  HadPlayed: 0
 --- !u!114 &1682256203
 MonoBehaviour:
   m_ObjectHideFlags: 0

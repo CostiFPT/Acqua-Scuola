@@ -11,6 +11,7 @@ public class TurnSystem : MonoBehaviour
     public GameObject Turnoavv;
 
     public static bool startTurn;
+    public bool HadPlayed;
     
     void Start()
     {
@@ -18,6 +19,7 @@ public class TurnSystem : MonoBehaviour
         isEnemyTurn = false;
 
         startTurn = false;
+        HadPlayed = false;
     }
 
     void Update()
@@ -51,6 +53,7 @@ public class TurnSystem : MonoBehaviour
             isEnemyTurn = false;
 
             startTurn = true;
+            HadPlayed = false;
         }
     }
 }
