@@ -52,7 +52,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 this.tag = "Untagged";
             }
 
-            if (this.tag != "HandCard" && playArea1.GetComponent<DropZone>().DropOnZone == true && this.tag != "Placed2" && this.tag != "Placed3")
+            if (this.tag != "HandCard" && playArea1.GetComponent<DropZone>().DropOnZone == true && this.tag != "Placed2" && this.tag != "Placed3" && this.GetComponent<DisplayCarta>().type == 1)
             {
                 this.transform.SetParent(WaterArea);
                 this.tag = "Placed1";
@@ -64,7 +64,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 this.tag = "Placed1";
             }
 
-            if (this.tag != "HandCard" && playArea2.GetComponent<DropZone1>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed3")
+            if (this.tag != "HandCard" && playArea2.GetComponent<DropZone1>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed3" && this.GetComponent<DisplayCarta>().type == 2)
             {
                 this.transform.SetParent(PlacingArea);
                 this.tag = "Placed2";

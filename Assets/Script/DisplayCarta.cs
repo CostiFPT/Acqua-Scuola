@@ -11,6 +11,7 @@ public class DisplayCarta : MonoBehaviour
     public int displayId;
 
     public int id;
+    public int type;
     public string cardName;
     public string cardDescription;
     public Sprite spriteCard;
@@ -62,6 +63,17 @@ public class DisplayCarta : MonoBehaviour
             Deck.deckSize -= 1;
             cardBack = false;
             this.tag = "HandCard";
+        }
+
+        type = 3;
+
+        if(id == 0 || id == 1)
+        {
+            type = 1;
+        }
+        if(id == 2 || id == 3)
+        {
+            type = 2;
         }
     }
 }
