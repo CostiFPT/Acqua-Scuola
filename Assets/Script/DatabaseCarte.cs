@@ -23,5 +23,6 @@ public class DatabaseCarte : MonoBehaviour
         cardList.Add(new Carta(12, "Prelievo Sostenibile", "Prendi una carta posizionamento a scelta e inseriscila nella tua mano.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
         cardList.Add(new Carta(13, "Gestione delle Risorse", "Nel turno successivo l'avversario giocherà a carte scoperte.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
         cardList.Add(new Carta(14, "Cooperazione", "Pesca una carta casualmente dalla mano dell'avversario, l'avversario fa lo stesso dalla tua mano.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(15, "Proteggere gli ecosistemi", "Finché questa carta è posizionata sul tuo campo, il tuo avversario non potrà rubarti gocce d'acqua e tu non potrai rubarle al tuo avversario.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
     }
 }
