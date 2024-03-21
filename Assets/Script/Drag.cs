@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    private int Times;
     GameObject playArea1;
     GameObject playArea2;
     GameObject playArea3;
@@ -64,7 +65,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
                 this.tag = "Placed1";
             }
 
-            if (this.tag != "HandCard" && playArea2.GetComponent<DropZone1>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed3" && this.GetComponent<DisplayCarta>().type == 2)
+            if (this.tag != "HandCard" && playArea2.GetComponent<DropZone1>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed3" && this.GetComponent<DisplayCarta>().type != 1)
             {
                 this.transform.SetParent(PlacingArea);
                 this.tag = "Placed2";
@@ -72,8 +73,26 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             }
             if (this.tag == "Placed2")
             {
-                this.transform.SetParent(PlacingArea);
-                this.tag = "Placed2";
+                if(this.GetComponent<DisplayCarta>().type == 2)
+                {
+                    this.transform.SetParent(PlacingArea);
+                    this.tag = "Placed2";
+                }
+                else
+                {
+                    this.transform.SetParent(PlacingArea);
+                    this.tag = "Placed2";
+                    if (this.GetComponent<DisplayCarta>().id == 7 && Times < 1)
+                    {
+                        StartCoroutine(Depuratore());
+                    }
+                    if (this.GetComponent<DisplayCarta>().id == 5 && Times < 1)
+                    {
+                        StartCoroutine(Inquinamento());
+                    }
+                    StartCoroutine(RemoveCard());
+                    Times = 0;
+                }
             }
 
             if (this.tag != "HandCard" && playArea3.GetComponent<DropZone2>().DropOnZone == true && this.tag != "Placed1" && this.tag != "Placed2")
@@ -98,6 +117,43 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             //Debug.Log("EndDrag");
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         GetComponent<LayoutElement>().ignoreLayout = false;
+    }
+
+    IEnumerator RemoveCard()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+
+    }
+
+    IEnumerator Depuratore()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject[] allCards = GameObject.FindGameObjectsWithTag("Placed1");
+        foreach(GameObject Card in allCards)
+        {
+            Card.GetComponent<DisplayCarta>().id = 0;
+            Card.transform.Rotate(0, 0, 90, Space.World);
+        }
+        Times++;
+    }
+    IEnumerator Inquinamento()
+    {
+        yield return new WaitForSeconds(1);
+        GameObject[] allCards = GameObject.FindGameObjectsWithTag("Placed1"); //aiuto
+        GameObject randomCard;
+        int index = 0;
+
+        //do
+        //{
+        //    index = Random.Range(0, allCards.Length);
+        //    randomCard = allCards[index];
+        //    randomCard = null;
+        //} while (randomCard.GetComponent<DisplayCarta>().id != 1);
+
+        //randomCard.GetComponent<DisplayCarta>().id = 1;
+        //randomCard.transform.Rotate(0, 0, 90, Space.World);
+        Times++;
     }
 
     // Start is called before the first frame update

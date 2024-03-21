@@ -38,15 +38,18 @@ public class DisplayCarta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        id = displayCarta[0].id;
-        cardName = displayCarta[0].cardName;
-        cardDescription = displayCarta[0].cardDescription;
-        spriteCard = displayCarta[0].spriteCard;
+        if(this.tag != "Placed1" && this.tag != "Placed2" && this.tag != "Placed3")
+        {
+            id = displayCarta[0].id;
+            cardName = displayCarta[0].cardName;
+            cardDescription = displayCarta[0].cardDescription;
+            spriteCard = displayCarta[0].spriteCard;
 
-        nameText.text = " " + cardName;
-        descriptionText.text = " " + cardDescription;
-        idText.text = " " + id;
-        artImage.sprite = spriteCard;
+            nameText.text = " " + cardName;
+            descriptionText.text = " " + cardDescription;
+            idText.text = " " + id;
+            artImage.sprite = spriteCard;
+        }
 
         Hand = GameObject.Find("Hand");
         if(this.transform.parent == Hand.transform.parent)
