@@ -29,7 +29,7 @@ public class Win : MonoBehaviour
             }
             //Debug.Log(WaterCount);
         }
-        //Debug.Log(WaterCount);
+
         if (WaterCount >= 5)
         {
             WinText.SetActive(true);
