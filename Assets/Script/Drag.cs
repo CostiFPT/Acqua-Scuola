@@ -140,19 +140,27 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     IEnumerator Inquinamento()
     {
         yield return new WaitForSeconds(1);
-        GameObject[] allCards = GameObject.FindGameObjectsWithTag("Placed1"); //aiuto
+        GameObject[] allWaters = GameObject.FindGameObjectsWithTag("Placed1"); //aiuto
         GameObject randomCard;
         int index = 0;
 
-        //do
-        //{
-        //    index = Random.Range(0, allCards.Length);
-        //    randomCard = allCards[index];
-        //    randomCard = null;
-        //} while (randomCard.GetComponent<DisplayCarta>().id != 1);
+        do
+        {
+            randomCard = null;
+            index = Random.Range(0, allCards.Length);
+            randomCard = allWaters[index];
+        } while (randomCard.GetComponent<DisplayCarta>().id != 1);
 
-        //randomCard.GetComponent<DisplayCarta>().id = 1;
-        //randomCard.transform.Rotate(0, 0, 90, Space.World);
+        if(randomCard.transform.eulerAngles.z != 90)
+        {
+            randomCard.GetComponent<DisplayCarta>().id = 1;
+            randomCard.transform.Rotate(0, 0, 90, Space.World);
+        }
+        else
+        {
+            randomCard.GetComponent<DisplayCarta>().id = 1;
+            randomCard.transform.Rotate(0, 0, -90, Space.World);
+        }
         Times++;
     }
 
