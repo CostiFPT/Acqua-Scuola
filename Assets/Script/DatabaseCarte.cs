@@ -24,5 +24,12 @@ public class DatabaseCarte : MonoBehaviour
         cardList.Add(new Carta(13, "Gestione delle Risorse", "Nel turno successivo l'avversario giocherà a carte scoperte.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
         cardList.Add(new Carta(14, "Cooperazione", "Pesca una carta casualmente dalla mano dell'avversario, l'avversario fa lo stesso dalla tua mano.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
         cardList.Add(new Carta(15, "Proteggere gli ecosistemi", "Finché questa carta è posizionata sul tuo campo, il tuo avversario non potrà rubarti gocce d'acqua e tu non potrai rubarle al tuo avversario.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(16, "Sostegno allo sviluppo", "Finché questa carta è posizionata sul tuo campo potrai giocare sia una carta abilità sia posizionare una goccia d'acqua nel tuo campo nello stesso turno (l'abilità verrà applicata nel turno successivo al posizionamento).", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(17, "Sviluppo del WC", "Prendi una carta a tua scelta dal mazzo degli scarti e giocala subito", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(18, "Rinforzo delle comunità", "Posizionando questa carta nel tuo campo potrai giocare due turni di fila, l’abilità verrà applicata nel turno successivo al posizionamento, al termine dei due turni la carta verrà messa nel mazzo degli scarti.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(19, "Disastri naturali", "Costringi il tuo avversario a giocare una carta svantaggio, se il tuo avversario ne è privo o non può giocarne, non potrà giocare carte abilità nel prossimo turno.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(20, "Prevenzione dai disastri", "Finché questa carta è posizionata nel tuo campo ti sarà impossibile utilizzare carte svantaggio.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
+        cardList.Add(new Carta(21, "Allagamento", "Tutte le carte posizionamento dal tuo campo vengono messe nel mazzo degli scarti.", Resources.Load<Sprite>("materialipericolosiplaceholder")));
     }
 }
+ 
