@@ -132,35 +132,48 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
         GameObject[] allCards = GameObject.FindGameObjectsWithTag("Placed1");
         foreach(GameObject Card in allCards)
         {
+            if(Card.GetComponent<DisplayCarta>().id == 1)
+            {
+                if (Card.transform.eulerAngles.z != 90)
+                {
+                    Card.transform.Rotate(0, 0, 90, Space.World);
+                }
+                else
+                {
+                    Card.transform.Rotate(0, 0, -90, Space.World);
+                }
+            }
+            
             Card.GetComponent<DisplayCarta>().id = 0;
-            Card.transform.Rotate(0, 0, 90, Space.World);
         }
         Times++;
     }
     IEnumerator Inquinamento()
     {
-        yield return new WaitForSeconds(1);
         GameObject[] allWaters = GameObject.FindGameObjectsWithTag("Placed1"); //aiuto
+
         GameObject randomCard;
-        int index = 0;
+        int index;
 
         do
         {
-            randomCard = null;
-            index = Random.Range(0, allCards.Length);
+            yield return new WaitForSeconds(1);
+            index = Random.Range(0, allWaters.Length);
             randomCard = allWaters[index];
+            Debug.Log(index);
+            Debug.Log(allWaters);
         } while (randomCard.GetComponent<DisplayCarta>().id != 1);
 
-        if(randomCard.transform.eulerAngles.z != 90)
+        if (randomCard.transform.eulerAngles.z != 90)
         {
-            randomCard.GetComponent<DisplayCarta>().id = 1;
             randomCard.transform.Rotate(0, 0, 90, Space.World);
         }
         else
         {
-            randomCard.GetComponent<DisplayCarta>().id = 1;
             randomCard.transform.Rotate(0, 0, -90, Space.World);
         }
+
+        randomCard.GetComponent<DisplayCarta>().id = 1;
         Times++;
     }
 
