@@ -6,6 +6,7 @@ public class CardToHand : MonoBehaviour
 {
     public GameObject Hand;
     public GameObject HandCard;
+    private GameObject TurnSys;
     private GameObject playArea;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class CardToHand : MonoBehaviour
     void Update()
     {
         Hand = GameObject.Find("Hand");
+
         if (this.tag == "HandCard")
         {
             HandCard.transform.SetParent(Hand.transform);
@@ -25,6 +27,7 @@ public class CardToHand : MonoBehaviour
             HandCard.transform.position = new Vector3(transform.position.x, transform.position.y, -48);
             HandCard.transform.eulerAngles = new Vector3(25, 0, 0);
         }
-        
+
+        TurnSys = GameObject.Find("DeckGiocatore");
     }
 }

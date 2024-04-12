@@ -74,7 +74,7 @@ public class DisplayCarta : MonoBehaviour
         {
             type = 1;
         }
-        if(id == 2 || id == 3)
+        if(id == 2 || id == 3 || id == 4 || id == 5 || id == 16)
         {
             type = 2;
         }
